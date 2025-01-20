@@ -12,4 +12,6 @@ https://frostico.github.io/EaglerHacksLauncher/
 
 
 More Servers & Stuff
+
+https://servers.eaglercraft.com/
 https://web.archive.org/web/20230205110931/https://docs.google.com/document/d/1PhUJSb0ojMyhv1Fs8bmVqwANBkySOgdyfRinJto3xnE/edit#  
