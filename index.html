@@ -190,6 +190,58 @@
      UwU Series
     </h2>
     <div class="grid">
+     <div class="card" data-name="eagler pocket mobile">
+  <button id="loadEagler">
+    Eagler Pocket Mobile
+    <span class="version">v1.0</span>
+  </button>
+</div>
+
+<style>
+  .card button {
+    all: unset;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 500;
+    text-align: left;
+    position: relative;
+    border-radius: 12px;
+    transition: background-color 0.3s;
+    user-select: none;
+  }
+  .card button:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(78, 204, 163, 0.4);
+    box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.1),
+      0 0 20px rgba(78, 204, 163, 0.4);
+  }
+  .card button .version {
+    float: right;
+    font-weight: 400;
+    opacity: 0.7;
+    font-size: 0.85rem;
+  }
+</style>
+
+<script>
+  document.getElementById('loadEagler').addEventListener('click', function() {
+    if (!document.getElementById('eagler-script')) {
+      const script = document.createElement('script');
+      script.id = 'eagler-script';
+      script.src = 'eaglerpocketmobile.user.js'; // your JS file path here
+      document.body.appendChild(script);
+      alert('Script loaded!');
+    } else {
+      alert('Script already loaded.');
+    }
+  });
+</script>
+
      <div class="card" data-name="uwuclient
                         beta 2">
       <a href="UwU-client-b2.html">
