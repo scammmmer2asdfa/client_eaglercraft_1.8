@@ -3,211 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Client Launcher - Installations</title>
+  <title>Installations</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #4ecca3;
-      --primary-dark: #45b792;
-      --bg-dark: #0f0f1a;
-      --bg-light: #1a1a2e;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-hover: rgba(255, 255, 255, 0.08);
-    }
-
     body {
-      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui,
-        sans-serif;
-      background: radial-gradient(circle at top right, var(--bg-light), var(--bg-dark));
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: radial-gradient(circle at top right, #1a1a2e, #0f0f1a);
       color: #fff;
       min-height: 100vh;
-      line-height: 1.5;
-    }
-
-    .container {
-      max-width: 1000px;
+      padding: 2rem;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 2rem;
     }
-
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: #fff;
-      text-shadow: 0 0 20px rgba(78, 204, 163, 0.3);
-      letter-spacing: 2px;
-      font-weight: 600;
-    }
-
-    .category {
-      margin-bottom: 2rem;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-
-    .category.hidden {
-      display: none;
-    }
-
-    .category h2 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-      font-size: 1.25rem;
-      font-weight: 500;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      cursor: pointer;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      background: var(--card-hover);
-      border-color: rgba(78, 204, 163, 0.4);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 0 20px rgba(78, 204, 163, 0.2);
-    }
-
-    .card a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1rem;
-      display: block;
-      padding: 1rem 1.5rem;
-      position: relative;
-      z-index: 1;
-      font-weight: 500;
-      pointer-events: none; /* disables clicking on inner a, use card click */
-    }
-
-    .version {
-      font-size: 0.8rem;
-      opacity: 0.7;
-      display: block;
-      margin-top: 0.25rem;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        padding: 1.5rem 1rem;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      }
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .no-results {
+      color: #4ecca3;
       text-align: center;
-      padding: 2rem;
-      color: rgba(255, 255, 255, 0.7);
-      display: none;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      margin-bottom: 1rem;
+    }
+    a {
+      color: #4ecca3;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .version {
+      font-weight: 400;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-left: 0.5rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Eaglercraft Client Installer Downloads</h1>
-    </header>
-
-    <div class="category" data-category="uwu">
-      <h2>UwU Series</h2>
-      <div class="grid">
-        <div class="card" data-filename="UwU-client-b1.html" data-name="UwU Client B1">
-          <a href="#">UwU Client<span class="version">B1</span></a>
-        </div>
-        <div class="card" data-filename="UwU-client-v1.0.html" data-name="UwU Client v1.0">
-          <a href="#">UwU Client<span class="version">v1.0</span></a>
-        </div>
-        <div class="card" data-filename="UwU-client-lite-v2.0.html" data-name="UwU Client Lite v2.0">
-          <a href="#">UwU Client Lite<span class="version">v2.0</span></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="category" data-category="dragon">
-      <h2>Dragon Series</h2>
-      <div class="grid">
-        <div class="card" data-filename="DragonX-v5.1.html" data-name="DragonX 5.1">
-          <a href="#">DragonX<span class="version">5.1</span></a>
-        </div>
-        <div class="card" data-filename="DragonX-v2.html" data-name="DragonXV2">
-          <a href="#">DragonX<span class="version">V2</span></a>
-        </div>
-        <div class="card" data-filename="DragonX-v4.html" data-name="DragonXV4">
-          <a href="#">DragonX<span class="version">V4</span></a>
-        </div>
-        <div class="card" data-filename="DragonX-lite.html" data-name="DragonXLite">
-          <a href="#">DragonX<span class="version">Lite</span></a>
-        </div>
-        <div class="card" data-filename="DragonX-v3.html" data-name="DragonXV3">
-          <a href="#">DragonX<span class="version">V3</span></a>
-        </div>
-        <div class="card" data-filename="DragonX-v2-premium.html" data-name="DragonXV2 Premium">
-          <a href="#">DragonX<span class="version">V2 Premium</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Function to force download of a file
-    function forceDownload(url, filename) {
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }
-
-    // Attach click events on cards to trigger forced download
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        const filename = card.getAttribute('data-filename');
-        if (!filename) return;
-        forceDownload(filename, filename);
-      });
-    });
-  </script>
+  <h1>Client Installations</h1>
+  <ul>
+  <li><a href="https://irv77.github.io/AmplerLauncher/" target="_blank" rel="noopener noreferrer">Ampler Launcher</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/UwU-client-b2.html" target="_blank" rel="noopener noreferrer">UwUClient Beta 2</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/UwUClient%20v1%20Full.html" target="_blank" rel="noopener noreferrer">UwUClient v1 Full</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/UwUlite2.html" target="_blank" rel="noopener noreferrer">UwU Lite 2.0</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/dragonxv5.html" target="_blank" rel="noopener noreferrer">DragonX Client V5.1</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/dragonv4.html" target="_blank" rel="noopener noreferrer">DragonX Client V4</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/DragonX%20New%20Click%20GUI.html" target="_blank" rel="noopener noreferrer">DragonX Premium V2 - New GUI</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/DragonX%20V3%20Client.html" target="_blank" rel="noopener noreferrer">DragonX V3</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/PremiumDragonv2.html" target="_blank" rel="noopener noreferrer">Premium Dragon V2</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/Shadow_Client_2.5_1.8.8_International.html" target="_blank" rel="noopener noreferrer">Shadow Client 2.5 International</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/Shadow_Client_en_US.html" target="_blank" rel="noopener noreferrer">Shadow Client English</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/eagler1.12.html" target="_blank" rel="noopener noreferrer">Eaglercraft 1.12</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/1.12client.html" target="_blank" rel="noopener noreferrer">Eaglercraft 1.12 Client</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/astrawasm.html" target="_blank" rel="noopener noreferrer">Astra Client Patch 2 v1.5</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/astrajsoffline.html" target="_blank" rel="noopener noreferrer">Astra client javascript version 1.6 beta release (better)</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/Stellar%20Client%20Beta.html" target="_blank" rel="noopener noreferrer">Starlike Client Beta</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/Stellar%20Client%20v1.html" target="_blank" rel="noopener noreferrer">Starlike Client V1 has a mod which is basically 1.21</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/Tuff_Client_International_Offline_1-12-2.html" target="_blank" rel="noopener noreferrer">Tuff Client 1.12</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/SigmaClientOfficialBeta.html" target="_blank" rel="noopener noreferrer">Sigma Client Official Beta</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/SigmaClient-1.0.0-u40.html" target="_blank" rel="noopener noreferrer">Sigma Client 1.0.0 u40</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/flameclient%203.7.html" target="_blank" rel="noopener noreferrer">Flame client 3.7 (Skidded Resent Client 3.8)</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/Koneclient-1.8.8-offlineDownload.html" target="_blank" rel="noopener noreferrer">Kone client 1.8.8 (has chunk borders)</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/Shadow_Client_2.5_1.8.8_International.html" target="_blank" rel="noopener noreferrer">Shadow client 1.8.8 (has Optifine)</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/Shadow_Client_en_US.html" target="_blank" rel="noopener noreferrer">Shadow client 1.8.8 US version (has Optifine)</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/EaglerReborn.html" target="_blank" rel="noopener noreferrer">EaglerReborn 1.8.8 (able to add .js mods only)</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/WurstX_b1_Offline_International.html" target="_blank" rel="noopener noreferrer">Wurst X B1</a></li>
+    <li><a href="https://github.com/scammmmer2asdfa/client_eaglercraft_1.8/blob/main/wurstX.html" target="_blank" rel="noopener noreferrer">Wurst X (don't know version)</a></li>
+  </ul>
 </body>
 </html>
