@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacks Launcher</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzAiIGZpbGw9IiMxYTFhMmUiLz48cGF0aCBkPSJNMjYgMjBMNDQgMzJMMjYgNDRWMjBaIiBmaWxsPSIjNGVjY2EzIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRlY2NhMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+">
-    <style>
-        * {
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Client Launcher
+  </title>
+  <link href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzAiIGZpbGw9IiMxYTFhMmUiLz48cGF0aCBkPSJNMjYgMjBMNDQgMzJMMjYgNDRWMjBaIiBmaWxsPSIjNGVjY2EzIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRlY2NhMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+" rel="icon" type="image/svg+xml"/>
+  <style>
+   * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -168,167 +170,281 @@
             color: rgba(255, 255, 255, 0.7);
             display: none;
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Eaglercraft Hack Client Launcher</h1>
-            <div class="search-container">
-                <input type="text" id="search" placeholder="Search clients..." autocomplete="off">
-            </div>
-        </header>
-
-        <div id="no-results" class="no-results">
-            No clients found matching your search.
-        </div>
-
-        <div class="category" data-category="uwu">
-            <h2>UwU Series</h2>
-            <div class="grid">
-                <div class="card" data-name="uwuclient b2">
-                    <a href="UwU-client-b2.html">
-                        UwUClient
-                        <span class="version">Beta 2</span>
-                    </a>
-                </div>
-                <div class="card" data-name="uwuclient v1">
-                    <a href="UwUClient v1 Full.html">
-                        UwUClient
-                        <span class="version">v1 Full</span>
-                    </a>
-                </div>
-                <div class="card" data-name="uwu lite">
-                    <a href="UwUlite2.html">
-                        UwU Lite
-                        <span class="version">2.0</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="category" data-category="dragon">
-            <h2>Dragon Series</h2>
-            <div class="grid">
-                         <div class="card" data-name="dragon v5">
-                    <a href="dragonxv5.html">
-                        DragonX Client
-                        <span class="version">V5.1</span>
-                    </a>
-                </div>
-                <div class="card" data-name="dragon v4">
-                    <a href="dragonv4.html">
-                        DragonX Client
-                        <span class="version">V4</span>
-                    </a>
-                </div>
-                <div class="card" data-name="dragonx new">
-                    <a href="DragonX New Click GUI.html">
-                        DragonX Premium
-                        <span class="version">V2 - New GUI</span>
-                    </a>
-                </div>
-                <div class="card" data-name="dragonx v3">
-                    <a href="DragonX V3 Client.html">
-                        DragonX
-                        <span class="version">V3</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="category" data-category="shadow">
-            <h2>Shadow Series</h2>
-            <div class="grid">
-                <div class="card" data-name="shadow client international">
-                    <a href="Shadow_Client_2.5_1.8.8_International.html">
-                        Shadow Client
-                        <span class="version">2.5 International</span>
-                    </a>
-                </div>
-                <div class="card" data-name="shadow client english">
-                    <a href="Shadow_Client_en_US.html">
-                        Shadow Client
-                        <span class="version">English</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="category" data-category="other">
-            <h2>Other Clients</h2>
-            <div class="grid">
-                                           <div class="card" data-name="justinv3">
-                    <a href="justinv3.html">
-                        Justin Client
-                        <span class="version">Version 3</span>
-                    </a>
-                </div>
-                <div class="card" data-name="wurstx">
-                    <a href="wurstX.html">
-                        WurstX Client
-                    </a>
-                </div>
-                                <div class="card" data-name="moonlight">
-                    <a href="moonlight.html">
-                        MoonLight Client
-
-                    </a>
-                </div>
-                <div class="card" data-name="piclient">
-                    <a href="PiClient.html">
-                        PiClient
-                    </a>
-                </div>
-
-
-                <div class="card" data-name="astra">
-                    <a href="astraclient.html">
-                        Astra Client (WASM)
-                    </a>
-                </div>
-                
-                <div class="card" data-name="meteor">
-                    <a href="meteor.html">
-                        Meteor Client
-                    </a>
-                </div>
-                <div class="card" data-name="demon">
-                    <a href="demon.html">
-                        Demon Client
-                    </a>
-                </div>
-                <div class="card" data-name="justin">
-                    <a href="justinclient.html">
-                        Justin Client
-                                                <span class="version">V1.2.4</span>
-
-                    </a>
-                </div>
-                <div class="card" data-name="koneclient">
-                    <a href="Koneclient-1.8.8-offlineDownload.html">
-                        Koneclient
-                        <span class="version">1.8.8 Offline</span>
-                    </a>
-                </div>
-                <div class="card" data-name="flame">
-                    <a href="flameclient 3.7.html">
-                        FlameClient
-                        <span class="version">3.7</span>
-                    </a>
-                </div>
-                                <div class="card" data-name="flame">
-                    <a href="daniel.html">
-                        Daniel Client
-                        <span class="version">V1</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <header>
+    <h1>
+     Eaglercraft Client Launcher
+    </h1>
+    <div class="search-container">
+     <input autocomplete="off" id="search" placeholder="Search clients..." type="text"/>
     </div>
-
-    <script>
-        const search = document.getElementById('search');
+   </header>
+   <div class="no-results" id="no-results">
+    No clients found matching your search.
+   </div>
+   <div class="category" data-category="uwu">
+    <h2>
+     UwU Series
+    </h2>
+    <div class="grid">
+     <div class="card" data-name="uwuclient
+                        beta 2">
+      <a href="UwU-client-b2.html">
+       UwUClient
+       <span class="version">
+        Beta 2
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="uwuclient
+                        v1 full">
+      <a href="UwUClient v1 Full.html">
+       UwUClient
+       <span class="version">
+        v1 Full
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="uwu lite
+                        2.0">
+      <a href="UwUlite2.html">
+       UwU Lite
+       <span class="version">
+        2.0
+       </span>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="category" data-category="dragon">
+    <h2>
+     Dragon Series
+    </h2>
+    <div class="grid">
+     <div class="card" data-name="dragonx client
+                        v5.1">
+      <a href="dragonxv5.html">
+       DragonX Client
+       <span class="version">
+        V5.1
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="dragonx client
+                        v4">
+      <a href="dragonv4.html">
+       DragonX Client
+       <span class="version">
+        V4
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="dragonx premium
+                        v2 - new gui">
+      <a href="DragonX New Click GUI.html">
+       DragonX Premium
+       <span class="version">
+        V2 - New GUI
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="dragonx
+                        v3">
+      <a href="DragonX V3 Client.html">
+       DragonX
+       <span class="version">
+        V3
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="premium dragon v2">
+      <a href="PremiumDragonv2.html">
+       Premium Dragon V2
+       <span class="version">
+        V2
+       </span>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="category" data-category="shadow">
+    <h2>
+     Shadow Series
+    </h2>
+    <div class="grid">
+     <div class="card" data-name="shadow client
+                        2.5 international">
+      <a href="Shadow_Client_2.5_1.8.8_International.html">
+       Shadow Client
+       <span class="version">
+        2.5 International
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="shadow client
+                        english">
+      <a href="Shadow_Client_en_US.html">
+       Shadow Client
+       <span class="version">
+        English
+       </span>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="category" data-category="noncracked">
+    <h2>
+     Non-Cracked Clients
+    </h2>
+    <div class="grid">
+     <div class="card" data-name="eaglercraft 1.12">
+      <a href="eagler1.12.html">
+       Eaglercraft 1.12
+      </a>
+     </div>
+     <div class="card" data-name="eaglercraft 1.12 client">
+      <a href="1.12client.html">
+       Eaglercraft 1.12 Client
+      </a>
+     </div>
+     <div class="card" data-name="pixel client 1.8">
+      <a href="pixel.html">
+       Pixel Client 1.8
+      </a>
+     </div>
+     <div class="card" data-name="astra client patch 2 v1.5">
+      <a href="astrawasm.html">
+       Astra Client Patch 2 v1.5
+       <span class="version">
+        Patch 2 v1.5
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="astra client">
+      <a href="astrajsoffline.html">
+       Astra client 
+       <span class="version">
+        javascript version 1.6 beta release (better)
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="starlike client beta">
+      <a href="Stellar Client Beta.html">
+       Starlike Client Beta
+       <span class="version">
+        Beta
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="starlike client v1">
+      <a href="Stellar Client v1.html">
+       Starlike client
+       <span class="version">
+        V1 has a mod which is basically 1.21
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="tuff client 1.12">
+      <a href="Tuff_Client_International_Offline_1-12-2.html">
+       Tuff Client 1.12
+       <span class="version">
+        1.12
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="sigma client official beta">
+      <a href="SigmaClientOfficialBeta.html">
+       Sigma Client Official Beta
+       <span class="version">
+        Official Beta
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="sigma client 1.0.0 u40">
+      <a href="SigmaClient-1.0.0-u40.html">
+       Sigma Client 1.0.0 u40
+       <span class="version">
+        1.0.0 u40
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="flame client 3.7">
+      <a href="flameclient 3.7.html">
+       Flame client 3.7
+       <span class="version">
+       Skidded Resent Client 3.8
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="kone client 1.8.8 ">
+      <a href="Koneclient-1.8.8-offlineDownload.html">
+        Kone client 1.8.8
+       <span class="version">
+       Kone client (has chunk borders)
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="shadow client 2.5.5 optifine">
+      <a href="Shadow_Client_2.5_1.8.8_International.html">
+        Shadow client 1.8.8
+       <span class="version">
+       Shadow client (has Optifine)
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="shadow client en us">
+      <a href="Shadow_Client_en_US.html">
+        Shadow client 1.8.8
+       <span class="version">
+       Shadow client but US version(has Optifine)
+       </span>
+      </a>
+     </div>
+     <div class="card" data-name="eagle reborn">
+      <a href="EaglerReborn.html">
+        EaglerReborn 1.8.8
+       <span class="version">
+       able to add .js mods only
+       </span>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="category" data-category="wurst">
+    <h2>
+     Wurst Clients
+    </h2>
+    <div class="grid">
+     <div class="card" data-name="wurst x b1">
+      <a href="WurstX_b1_Offline_International.html">
+       Wurst X B1
+       <span class="version">
+        B1
+       </span>
+      </a>
+     </div>
+    </div>
+   </div>
+     <div class="card" data-name="wurst x b1">
+      <a href="wurstX.html">
+       Wurst X 
+       <span class="version">
+        don't know
+       </span>
+      </a>
+     </div>
+    </div>
+   </div>
+   <div class="category" data-category="other">
+    <div class="grid">
+    </div>
+   </div>
+  </div>
+  <script>
+   const search = document.getElementById('search');
         const categories = document.querySelectorAll('.category');
         const cards = document.querySelectorAll('.card');
         const noResults = document.getElementById('no-results');
@@ -367,6 +483,6 @@
         search.addEventListener('input', (e) => {
             filterClients(e.target.value);
         });
-    </script>
-</body>
+  </script>
+ </body>
 </html>
