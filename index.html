@@ -1,530 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Google Docs
-  </title>
-  <link href="https://cdn-icons-png.flaticon.com/512/5968/5968517.png"/>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Client Launchers</title>
+  <link href="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" rel="icon" />
   <style>
-   * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        :root {
-            --primary: #4ecca3;
-            --primary-dark: #45b792;
-            --bg-dark: #0f0f1a;
-            --bg-light: #1a1a2e;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-hover: rgba(255, 255, 255, 0.08);
-        }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      background: url('./background/background4.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      min-height: 100vh;
+      line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            background: radial-gradient(circle at top right, var(--bg-light), var(--bg-dark));
-            color: #fff;
-            min-height: 100vh;
-            line-height: 1.5;
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 1rem;
+      transition: transform 0.3s ease;
+      z-index: 20;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+    #sidebar h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(78, 204, 163, 0.3);
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
+    #sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+      transition: 0.2s ease;
+    }
 
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            position: relative;
-        }
+    #sidebar a:hover {
+      color: #00bfff;
+    }
 
-        .search-container input {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            font-size: 1rem;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
+    #toggleBtn {
+      position: fixed;
+      top: 1rem;
+      left: 260px;
+      z-index: 25;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid white;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-        .search-container input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(78, 204, 163, 0.2);
-        }
+    #toggleBtn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
 
-        .category {
-            margin-bottom: 2rem;
-            opacity: 1;
-            transition: opacity 0.3s ease;
-        }
+    .collapsed #sidebar {
+      transform: translateX(-100%);
+    }
 
-        .category.hidden {
-            display: none;
-        }
+    .collapsed #toggleBtn {
+      left: 10px;
+    }
 
-        .category h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-            font-weight: 500;
-        }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+      padding-left: 270px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      transition: padding-left 0.3s ease;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-        }
+    .collapsed .container {
+      padding-left: 2rem !important;
+    }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
 
-        .card:hover {
-            transform: translateY(-4px);
-            background: var(--card-hover);
-            border-color: rgba(78, 204, 163, 0.4);
-            box-shadow: 
-                0 4px 20px rgba(0, 0, 0, 0.1),
-                0 0 20px rgba(78, 204, 163, 0.2);
-        }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
 
-        .card a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1rem;
-            display: block;
-            padding: 1rem 1.5rem;
-            position: relative;
-            z-index: 1;
-            font-weight: 500;
-        }
+    h2 {
+      color: white;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
 
-        .card:hover a {
-            color: var(--primary);
-        }
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
 
-        .version {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            display: block;
-            margin-top: 0.25rem;
-        }
+    .search-container input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      color: white;
+      transition: all 0.3s ease;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem 1rem;
-            }
+    .search-container input:focus {
+      outline: none;
+      border-color: white;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
 
-            h1 {
-                font-size: 2rem;
-            }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
 
-            .grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: white;
+    }
 
-        @keyframes slideIn {
-            from { 
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .card:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: white;
+      transform: translateY(-4px);
+      color: black;
+    }
 
-        .no-results {
-            text-align: center;
-            padding: 2rem;
-            color: rgba(255, 255, 255, 0.7);
-            display: none;
-        }
+    .card a {
+      text-decoration: none;
+      color: white;
+      font-size: 1rem;
+      display: block;
+      padding: 1rem 1.5rem;
+    }
+
+    .card:hover a {
+      color: black;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: white;
+      opacity: 0.8;
+      padding: 0 1.5rem 1rem;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 2rem;
+      color: rgba(255, 255, 255, 0.7);
+      display: none;
+    }
   </style>
- </head>
- <body>
-  <div class="container">
-   <header>
-    <h1>
-     Eaglercraft Client Launcher
-    </h1>
-    <div class="search-container">
-     <input autocomplete="off" id="search" placeholder="Search clients..." type="text"/>
-    </div>
-   </header>
-   <div class="no-results" id="no-results">
-    No clients found matching your search.
-   </div>
-
-<div class="card" data-name="ampler launcher">
-  <button onclick="window.location.href='https://irv77.github.io/AmplerLauncher/'">
-    Ampler Launcher
-    <span class="version">v1.0</span>
-  </button>
-</div>
-
-<style>
-  .card button {
-    all: unset;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
-    color: #fff;
-    font-weight: 500;
-    text-align: left;
-    position: relative;
-    border-radius: 12px;
-    transition: background-color 0.3s;
-    user-select: none;
-  }
-  .card button:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(78, 204, 163, 0.4);
-    box-shadow: 
-      0 4px 20px rgba(0, 0, 0, 0.1),
-      0 0 20px rgba(78, 204, 163, 0.4);
-  }
-  .card button .version {
-    float: right;
-    font-weight: 400;
-    opacity: 0.7;
-    font-size: 0.85rem;
-  }
-</style>
-     <div class="card" data-name="installations
-                        ">
-      <a href="installations.html">
-       INSTALLATIONS DOWNLOAD FROM HERE
-       <span class="version">
-        added as of 13/07/2025
-       </span>
-      </a>
-     </div>
-   <div class="category" data-category="uwu">
-    <h2>
-     UwU Series
-    </h2>
-    <div class="grid">
-     <div class="card" data-name="uwuclient
-                        beta 2">
-      <a href="UwU-client-b2.html">
-       UwUClient
-       <span class="version">
-        Beta 2
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="uwuclient
-                        v1 full">
-      <a href="UwUClient v1 Full.html">
-       UwUClient
-       <span class="version">
-        v1 Full
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="uwu lite
-                        2.0">
-      <a href="UwUlite2.html">
-       UwU Lite
-       <span class="version">
-        2.0
-       </span>
-      </a>
-     </div>
-    </div>
-   </div>
-   <div class="category" data-category="dragon">
-    <h2>
-     Dragon Series
-    </h2>
-    <div class="grid">
-     <div class="card" data-name="dragonx client
-                        v5.1">
-      <a href="dragonxv5.html">
-       DragonX Client
-       <span class="version">
-        V5.1
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="dragonx client
-                        v4">
-      <a href="dragonv4.html">
-       DragonX Client
-       <span class="version">
-        V4
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="dragonx premium
-                        v2 - new gui">
-      <a href="DragonX New Click GUI.html">
-       DragonX Premium
-       <span class="version">
-        V2 - New GUI
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="dragonx
-                        v3">
-      <a href="DragonX V3 Client.html">
-       DragonX
-       <span class="version">
-        V3
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="premium dragon v2">
-      <a href="PremiumDragonv2.html">
-       Premium Dragon V2
-       <span class="version">
-        V2
-       </span>
-      </a>
-     </div>
-    </div>
-   </div>
-   <div class="category" data-category="shadow">
-    <h2>
-     Shadow Series
-    </h2>
-    <div class="grid">
-     <div class="card" data-name="shadow client
-                        2.5 international">
-      <a href="Shadow_Client_2.5_1.8.8_International.html">
-       Shadow Client
-       <span class="version">
-        2.5 International
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="shadow client
-                        english">
-      <a href="Shadow_Client_en_US.html">
-       Shadow Client
-       <span class="version">
-        English
-       </span>
-      </a>
-     </div>
-    </div>
-   </div>
-   <div class="category" data-category="noncracked">
-    <h2>
-     Non-Cracked Clients
-    </h2>
-    <div class="grid">
-     <div class="card" data-name="eaglercraft 1.12">
-      <a href="eagler1.12.html">
-       Eaglercraft 1.12
-      </a>
-     </div>
-     <div class="card" data-name="eaglercraft 1.12 client">
-      <a href="1.12client.html">
-       Eaglercraft 1.12 Client
-      </a>
-     </div>
-     <div class="card" data-name="astra client patch 2 v1.5">
-      <a href="astrawasm.html">
-       Astra Client Patch 2 v1.5
-       <span class="version">
-        Patch 2 v1.5
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="astra client">
-      <a href="astrajsoffline.html">
-       Astra client 
-       <span class="version">
-        javascript version 1.6 beta release (better)
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="starlike client beta">
-      <a href="Stellar Client Beta.html">
-       Starlike Client Beta
-       <span class="version">
-        Beta
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="starlike client v1">
-      <a href="Stellar Client v1.html">
-       Starlike client
-       <span class="version">
-        V1 has a mod which is basically 1.21
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="tuff client 1.12">
-      <a href="Tuff_Client_International_Offline_1-12-2.html">
-       Tuff Client 1.12
-       <span class="version">
-        1.12
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="sigma client official beta">
-      <a href="SigmaClientOfficialBeta.html">
-       Sigma Client Official Beta
-       <span class="version">
-        Official Beta
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="sigma client 1.0.0 u40">
-      <a href="SigmaClient-1.0.0-u40.html">
-       Sigma Client 1.0.0 u40
-       <span class="version">
-        1.0.0 u40
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="flame client 3.7">
-      <a href="flameclient 3.7.html">
-       Flame client 3.7
-       <span class="version">
-       Skidded Resent Client 3.8
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="kone client 1.8.8 ">
-      <a href="Koneclient-1.8.8-offlineDownload.html">
-        Kone client 1.8.8
-       <span class="version">
-       Kone client (has chunk borders)
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="shadow client 2.5.5 optifine">
-      <a href="Shadow_Client_2.5_1.8.8_International.html">
-        Shadow client 1.8.8
-       <span class="version">
-       Shadow client (has Optifine)
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="shadow client en us">
-      <a href="Shadow_Client_en_US.html">
-        Shadow client 1.8.8
-       <span class="version">
-       Shadow client but US version(has Optifine)
-       </span>
-      </a>
-     </div>
-     <div class="card" data-name="eagle reborn">
-      <a href="EaglerReborn.html">
-        EaglerReborn 1.8.8
-       <span class="version">
-       able to add .js mods only
-       </span>
-      </a>
-     </div>
-    </div>
-   </div>
-   <div class="category" data-category="wurst">
-    <h2>
-     Wurst Clients
-    </h2>
-    <div class="grid">
-     <div class="card" data-name="wurst x b1">
-      <a href="WurstX_b1_Offline_International.html">
-       Wurst X B1
-       <span class="version">
-        B1
-       </span>
-      </a>
-     </div>
-    </div>
-   </div>
-     <div class="card" data-name="wurst x b1">
-      <a href="wurstX.html">
-       Wurst X 
-       <span class="version">
-        don't know
-       </span>
-      </a>
-     </div>
-    </div>
-   </div>
-   <div class="category" data-category="other">
-    <div class="grid">
-    </div>
-   </div>
+</head>
+<body>
+  <div id="sidebar">
+    <h2>Navigation</h2>
+    <a href="index.html">Home</a>
+    <a href="client.html">Clients</a>
+    <a href="installations.html">Installations</a>
+    <a href="packs.html">Texture Packs</a>
+    <a href="credits.html">Credits</a>
+    <a href="api.html">API Docs</a>
+    <a href="ci.html">Downloads</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About Eaglercraft</a>
+    <a href="links.html">Other Links</a>
+    <a href="screenshots.html">Client Screenshots</a>
   </div>
+
+  <button id="toggleBtn">&lt;</button>
+
+  <div class="container">
+    <header>
+      <h1>Eaglercraft Client Launcher</h1>
+      <div class="search-container">
+        <input autocomplete="off" id="search" placeholder="Search clients..." type="text" />
+      </div>
+    </header>
+
+    <div class="no-results" id="no-results">No clients found matching your search.</div>
+    <!-- UwU Series -->
+    <div class ="category">
+      <h2> Mobile UI from Flamedoggo </h2>
+      <div class="grid">
+        <div class="card"><a href="clients/pocketeagler/index.html">Eaglercraft mobile</a><p>Optimized for mobile.</p></div>
+     </div>
+    </div>
+
+    <div class="category">
+      <h2>UwU Series</h2>
+      <div class="grid">
+        <div class="card"><a href="clients/UwU-client-b2.html">UwUClient Beta 2</a><p>Lightweight client with minimal features.</p></div>
+        <div class="card"><a href="clients/UwUClient v1 Full.html">UwUClient v1 Full</a><p>Includes additional mods and GUI.</p></div>
+        <div class="card"><a href="clients/UwUlite2.html">UwU Lite 2.0</a><p>Optimized for low-end systems.</p></div>
+      </div>
+    </div>
+
+    <!-- Justin Series -->
+    <div class="category">
+      <h2>Justin Series</h2>
+      <div class="grid">
+        <div class="card"><a href="clients/justinv3.html">Justin Client V3</a><p>Basic test client.</p></div>
+        <div class="card"><a href="clients/Justin 1.2.4.html">Justin Client 1.2.4</a><p>Full version with GUI mods.</p></div>
+        <div class="card"><a href="clients/justinclient.html">Justin Client</a><p>Performance-focused version.</p></div>
+      </div>
+    </div>
+
+    <!-- Pi Series -->
+    <div class="category">
+      <h2>Pi Series</h2>
+      <div class="grid">
+        <div class="card"><a href="clients/pi-client.html">Pi Client</a><p>Test client.</p></div>
+        <div class="card"><a href="clients/PiClient.html">Pi Client</a><p>Low-end performance build.</p></div>
+      </div>
+    </div>
+
+    <!-- Nit Series -->
+    <div class="category">
+      <h2>Nit Series</h2>
+      <div class="grid">
+        <div class="card"><a href="clients/NitClient 2.0.html">Nit Client 2.0</a><p>Minimal feature client.</p></div>
+        <div class="card"><a href="clients/nit_client.html">Nit Client</a><p>For low-end systems.</p></div>
+      </div>
+    </div>
+
+    <!-- Other Clients -->
+    <div class="category">
+      <h2>Other Clients</h2>
+      <div class="grid">
+        <div class="card"><a href="clients/meteor.html">Meteor Client</a><p>Simple modded client.</p></div>
+        <div class="card"><a href="clients/demon.html">Demon Client</a><p>Optimized build.</p></div>
+        <div class="card"><a href="clients/daniel.html">Daniel Client</a><p>Performance-focused edition.</p></div>
+      </div>
+    </div>
+
+    <!-- Dragon Series -->
+    <div class="category">
+      <h2>Dragon Series</h2>
+      <div class="grid">
+        <div class="card"><a href="clients/dragonxv5.html">DragonX Client v5.1</a><p>Advanced mods and visuals.</p></div>
+        <div class="card"><a href="clients/dragonv4.html">DragonX Client v4</a><p>Stable version.</p></div>
+        <div class="card"><a href="clients/DragonX New Click GUI.html">DragonX Premium v2</a><p>New GUI layout.</p></div>
+        <div class="card"><a href="clients/PremiumDragonv2.html">Premium Dragon V2</a><p>Exclusive enhancements.</p></div>
+        <div class="card"><a href="clients/DragonX V3 Client.html">DragonX V3</a><p>Earlier version with updates.</p></div>
+      </div>
+    </div>
+
+    <!-- Non-Cracked Clients -->
+    <div class="category">
+      <h2>Non-Cracked Clients</h2>
+      <div class="grid">
+        <div class="card"><a href="clients/eagler1.12.html">Eaglercraft 1.12</a><p>Classic version.</p></div>
+        <div class="card"><a href="clients/1.12client.html">Eaglercraft 1.12 Client</a><p>Performance-enhanced.</p></div>
+        <div class="card"><a href="clients/astrawasm.html">Astra Patch 2 v1.5</a><p>Bug fixes and performance.</p></div>
+        <div class="card"><a href="clients/astrajsoffline.html">Astra Client</a><p>Multi-version support.</p></div>
+        <div class="card"><a href="clients/Stellar Client Beta.html">Starlike Beta</a><p>Beta with new features.</p></div>
+        <div class="card"><a href="clients/Stellar Client v1.html">Starlike Client</a><p>Modded full version.</p></div>
+        <div class="card"><a href="clients/Tuff_Client_International_Offline_1-12-2.html">Tuff Client 1.12</a><p>Offline-capable client.</p></div>
+        <div class="card"><a href="clients/SigmaClientOfficialBeta.html">Sigma Client Beta</a><p>Popular competitive build.</p></div>
+        <div class="card"><a href="clients/SigmaClient-1.0.0-u40.html">Sigma Client u40</a><p>Latest enhancements.</p></div>
+        <div class="card"><a href="clients/TuffClient_WASM_Offline.html">Tuff Client</a><p>wasm-gc client</p></div>
+      </div>
+    </div>
+      <!-- Wurst Clients -->
+      <div class="category">
+        <h2>Wurst Clients</h2>
+        <div class="grid">
+          <div class="card">
+            <a href="clients/WurstX_b1_Offline_International.html">Wurst X B1</a>
+            <p>Offline version of Wurst X with a range of hacks and tools.</p>
+          </div>
+          <div class="card">
+            <a href="clients/wurstX.html">Wurst X</a>
+            <p>Famous for its wide selection of hacks and easy-to-use interface.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <script>
-   const search = document.getElementById('search');
-        const categories = document.querySelectorAll('.category');
-        const cards = document.querySelectorAll('.card');
-        const noResults = document.getElementById('no-results');
+    const toggleBtn = document.getElementById("toggleBtn");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("collapsed");
+      toggleBtn.textContent = document.body.classList.contains("collapsed") ? ">" : "<";
+    });
 
-        function filterClients(searchTerm) {
-            searchTerm = searchTerm.toLowerCase().trim();
-            let hasVisibleCards = false;
+    const search = document.getElementById('search');
+    const categories = document.querySelectorAll('.category');
+    const cards = document.querySelectorAll('.card');
+    const noResults = document.getElementById('no-results');
 
-            // If search is empty, show everything and return
-            if (searchTerm === '') {
-                cards.forEach(card => card.style.display = '');
-                categories.forEach(category => category.style.display = '');
-                noResults.style.display = 'none';
-                return;
-            }
+    function filterClients(searchTerm) {
+      searchTerm = searchTerm.toLowerCase().trim();
+      let hasVisibleCards = false;
 
-            // Filter cards based on search term
-            cards.forEach(card => {
-                const cardText = card.textContent.toLowerCase();
-                const isVisible = cardText.includes(searchTerm);
-                card.style.display = isVisible ? '' : 'none';
-                if (isVisible) hasVisibleCards = true;
-            });
+      if (searchTerm === '') {
+        cards.forEach(card => card.style.display = '');
+        categories.forEach(category => category.style.display = '');
+        noResults.style.display = 'none';
+        return;
+      }
 
-            // Show/hide categories based on whether they have visible cards
-            categories.forEach(category => {
-                const hasVisibleCard = Array.from(category.querySelectorAll('.card'))
-                    .some(card => card.style.display !== 'none');
-                category.style.display = hasVisibleCard ? '' : 'none';
-            });
+      cards.forEach(card => {
+        const cardText = card.textContent.toLowerCase();
+        const isVisible = cardText.includes(searchTerm);
+        card.style.display = isVisible ? '' : 'none';
+        if (isVisible) hasVisibleCards = true;
+      });
 
-            // Show/hide no results message
-            noResults.style.display = hasVisibleCards ? 'none' : 'block';
-        }
+      categories.forEach(category => {
+        const hasVisibleCard = Array.from(category.querySelectorAll('.card'))
+          .some(card => card.style.display !== 'none');
+        category.style.display = hasVisibleCard ? '' : 'none';
+      });
 
-        search.addEventListener('input', (e) => {
-            filterClients(e.target.value);
-        });
+      noResults.style.display = hasVisibleCards ? 'none' : 'block';
+    }
+
+    search.addEventListener('input', (e) => {
+      filterClients(e.target.value);
+    });
   </script>
- </body>
+</body>
 </html>
