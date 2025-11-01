@@ -149,6 +149,7 @@
 
     <div class="no-results" id="no-results">No clients found matching your search.</div>
 
+    <!-- UwU Series -->
     <div class="category">
       <h2>UwU Series</h2>
       <div class="grid">
@@ -158,15 +159,18 @@
       </div>
     </div>
 
+    <!-- Dragon Series -->
     <div class="category">
       <h2>Dragon Series</h2>
       <div class="grid">
         <div class="card"><a href="clients/dragonxv5.html">DragonX Client v5.1</a><p>Advanced mods and visuals.</p></div>
         <div class="card"><a href="clients/dragonv4.html">DragonX Client v4</a><p>Stable version.</p></div>
+        <div class="card"><a href="clients/DragonX New Click GUI.html">DragonX Premium v2</a><p>New GUI layout.</p></div>
+        <div class="card"><a href="clients/PremiumDragonv2.html">Premium Dragon V2</a><p>Exclusive enhancements.</p></div>
+        <div class="card"><a href="clients/DragonX V3 Client.html">DragonX V3</a><p>Earlier version with updates.</p></div>
       </div>
     </div>
-  </div>
-   <div class="no-results" id="no-results">No clients found matching your search.</div>
+
     <!-- Justin Series -->
     <div class="category">
       <h2>Justin Series</h2>
@@ -205,18 +209,6 @@
       </div>
     </div>
 
-    <!-- Dragon Series -->
-    <div class="category">
-      <h2>Dragon Series</h2>
-      <div class="grid">
-        <div class="card"><a href="clients/dragonxv5.html">DragonX Client v5.1</a><p>Advanced mods and visuals.</p></div>
-        <div class="card"><a href="clients/dragonv4.html">DragonX Client v4</a><p>Stable version.</p></div>
-        <div class="card"><a href="clients/DragonX New Click GUI.html">DragonX Premium v2</a><p>New GUI layout.</p></div>
-        <div class="card"><a href="clients/PremiumDragonv2.html">Premium Dragon V2</a><p>Exclusive enhancements.</p></div>
-        <div class="card"><a href="clients/DragonX V3 Client.html">DragonX V3</a><p>Earlier version with updates.</p></div>
-      </div>
-    </div>
-
     <!-- Non-Cracked Clients -->
     <div class="category">
       <h2>Non-Cracked Clients</h2>
@@ -233,24 +225,19 @@
         <div class="card"><a href="clients/TuffClient_WASM_Offline.html">Tuff Client</a><p>wasm-gc client</p></div>
       </div>
     </div>
-      <!-- Wurst Clients -->
-      <div class="category">
-        <h2>Wurst Clients</h2>
-        <div class="grid">
-          <div class="card">
-            <a href="clients/WurstX_b1_Offline_International.html">Wurst X B1</a>
-            <p>Offline version of Wurst X with a range of hacks and tools.</p>
-          </div>
-          <div class="card">
-            <a href="clients/wurstX.html">Wurst X</a>
-            <p>Famous for its wide selection of hacks and easy-to-use interface.</p>
-          </div>
-        </div>
+
+    <!-- Wurst Clients -->
+    <div class="category">
+      <h2>Wurst Clients</h2>
+      <div class="grid">
+        <div class="card"><a href="clients/WurstX_b1_Offline_International.html">Wurst X B1</a><p>Offline version of Wurst X with a range of hacks and tools.</p></div>
+        <div class="card"><a href="clients/wurstX.html">Wurst X</a><p>Famous for its wide selection of hacks and easy-to-use interface.</p></div>
       </div>
     </div>
 
+  </div> <!-- end of container -->
+
   <script>
-    // Randomized background images
     const backgrounds = [
       "https://images.pexels.com/photos/1367192/pexels-photo-1367192.jpeg",
       "https://images.pexels.com/photos/20042348/pexels-photo-20042348.jpeg",
@@ -259,7 +246,6 @@
     ];
     document.body.style.backgroundImage = `url(${backgrounds[Math.floor(Math.random() * backgrounds.length)]})`;
 
-    // Search functionality
     const search = document.getElementById('search');
     const categories = document.querySelectorAll('.category');
     const cards = document.querySelectorAll('.card');
@@ -292,9 +278,7 @@
       noResults.style.display = hasVisibleCards ? 'none' : 'block';
     }
 
-    search.addEventListener('input', (e) => {
-      filterClients(e.target.value);
-    });
+    search.addEventListener('input', (e) => filterClients(e.target.value));
   </script>
 </body>
 </html>
