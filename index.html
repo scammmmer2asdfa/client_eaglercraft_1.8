@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Client Launchers</title>
   <link href="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" rel="icon" />
   <style>
@@ -14,13 +14,14 @@
 
     body {
       font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-      background: url('./background/background4.png') no-repeat center center fixed;
+      background: no-repeat center center fixed;
       background-size: cover;
       color: white;
       min-height: 100vh;
       line-height: 1.5;
       position: relative;
       overflow-x: hidden;
+      transition: background 1s ease-in-out;
     }
 
     body::before {
@@ -34,80 +35,16 @@
       z-index: -1;
     }
 
-    #sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 250px;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      padding: 1rem;
-      transition: transform 0.3s ease;
-      z-index: 20;
-      border-right: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    #sidebar h2 {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    #sidebar a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      margin: 0.5rem 0;
-      font-size: 1.1rem;
-      transition: 0.2s ease;
-    }
-
-    #sidebar a:hover {
-      color: #00bfff;
-    }
-
-    #toggleBtn {
-      position: fixed;
-      top: 1rem;
-      left: 260px;
-      z-index: 25;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid white;
-      border-radius: 8px;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    #toggleBtn:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-
-    .collapsed #sidebar {
-      transform: translateX(-100%);
-    }
-
-    .collapsed #toggleBtn {
-      left: 10px;
-    }
-
     .container {
       max-width: 1000px;
       margin: 0 auto;
       padding: 2rem;
-      padding-left: 270px;
       background: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-radius: 16px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      transition: padding-left 0.3s ease;
-    }
-
-    .collapsed .container {
-      padding-left: 2rem !important;
+      transition: padding 0.3s ease;
     }
 
     header {
@@ -202,23 +139,6 @@
   </style>
 </head>
 <body>
-  <div id="sidebar">
-    <h2>Navigation</h2>
-    <a href="index.html">Home</a>
-    <a href="client.html">Clients</a>
-    <a href="installations.html">Installations</a>
-    <a href="packs.html">Texture Packs</a>
-    <a href="credits.html">Credits</a>
-    <a href="api.html">API Docs</a>
-    <a href="ci.html">Downloads</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html">About Eaglercraft</a>
-    <a href="links.html">Other Links</a>
-    <a href="screenshots.html">Client Screenshots</a>
-  </div>
-
-  <button id="toggleBtn">&lt;</button>
-
   <div class="container">
     <header>
       <h1>Eaglercraft Client Launcher</h1>
@@ -228,13 +148,6 @@
     </header>
 
     <div class="no-results" id="no-results">No clients found matching your search.</div>
-    <!-- UwU Series -->
-    <div class ="category">
-      <h2> Mobile UI from Flamedoggo </h2>
-      <div class="grid">
-        <div class="card"><a href="clients/pocketeagler/index.html">Eaglercraft mobile</a><p>Optimized for mobile.</p></div>
-     </div>
-    </div>
 
     <div class="category">
       <h2>UwU Series</h2>
@@ -245,95 +158,26 @@
       </div>
     </div>
 
-    <!-- Justin Series -->
-    <div class="category">
-      <h2>Justin Series</h2>
-      <div class="grid">
-        <div class="card"><a href="clients/justinv3.html">Justin Client V3</a><p>Basic test client.</p></div>
-        <div class="card"><a href="clients/Justin 1.2.4.html">Justin Client 1.2.4</a><p>Full version with GUI mods.</p></div>
-        <div class="card"><a href="clients/justinclient.html">Justin Client</a><p>Performance-focused version.</p></div>
-      </div>
-    </div>
-
-    <!-- Pi Series -->
-    <div class="category">
-      <h2>Pi Series</h2>
-      <div class="grid">
-        <div class="card"><a href="clients/pi-client.html">Pi Client</a><p>Test client.</p></div>
-        <div class="card"><a href="clients/PiClient.html">Pi Client</a><p>Low-end performance build.</p></div>
-      </div>
-    </div>
-
-    <!-- Nit Series -->
-    <div class="category">
-      <h2>Nit Series</h2>
-      <div class="grid">
-        <div class="card"><a href="clients/NitClient 2.0.html">Nit Client 2.0</a><p>Minimal feature client.</p></div>
-        <div class="card"><a href="clients/nit_client.html">Nit Client</a><p>For low-end systems.</p></div>
-      </div>
-    </div>
-
-    <!-- Other Clients -->
-    <div class="category">
-      <h2>Other Clients</h2>
-      <div class="grid">
-        <div class="card"><a href="clients/meteor.html">Meteor Client</a><p>Simple modded client.</p></div>
-        <div class="card"><a href="clients/demon.html">Demon Client</a><p>Optimized build.</p></div>
-        <div class="card"><a href="clients/daniel.html">Daniel Client</a><p>Performance-focused edition.</p></div>
-      </div>
-    </div>
-
-    <!-- Dragon Series -->
     <div class="category">
       <h2>Dragon Series</h2>
       <div class="grid">
         <div class="card"><a href="clients/dragonxv5.html">DragonX Client v5.1</a><p>Advanced mods and visuals.</p></div>
         <div class="card"><a href="clients/dragonv4.html">DragonX Client v4</a><p>Stable version.</p></div>
-        <div class="card"><a href="clients/DragonX New Click GUI.html">DragonX Premium v2</a><p>New GUI layout.</p></div>
-        <div class="card"><a href="clients/PremiumDragonv2.html">Premium Dragon V2</a><p>Exclusive enhancements.</p></div>
-        <div class="card"><a href="clients/DragonX V3 Client.html">DragonX V3</a><p>Earlier version with updates.</p></div>
       </div>
     </div>
-
-    <!-- Non-Cracked Clients -->
-    <div class="category">
-      <h2>Non-Cracked Clients</h2>
-      <div class="grid">
-        <div class="card"><a href="clients/eagler1.12.html">Eaglercraft 1.12</a><p>Classic version.</p></div>
-        <div class="card"><a href="clients/1.12client.html">Eaglercraft 1.12 Client</a><p>Performance-enhanced.</p></div>
-        <div class="card"><a href="clients/astrawasm.html">Astra Patch 2 v1.5</a><p>Bug fixes and performance.</p></div>
-        <div class="card"><a href="clients/astrajsoffline.html">Astra Client</a><p>Multi-version support.</p></div>
-        <div class="card"><a href="clients/Stellar Client Beta.html">Starlike Beta</a><p>Beta with new features.</p></div>
-        <div class="card"><a href="clients/Stellar Client v1.html">Starlike Client</a><p>Modded full version.</p></div>
-        <div class="card"><a href="clients/Tuff_Client_International_Offline_1-12-2.html">Tuff Client 1.12</a><p>Offline-capable client.</p></div>
-        <div class="card"><a href="clients/SigmaClientOfficialBeta.html">Sigma Client Beta</a><p>Popular competitive build.</p></div>
-        <div class="card"><a href="clients/SigmaClient-1.0.0-u40.html">Sigma Client u40</a><p>Latest enhancements.</p></div>
-        <div class="card"><a href="clients/TuffClient_WASM_Offline.html">Tuff Client</a><p>wasm-gc client</p></div>
-      </div>
-    </div>
-      <!-- Wurst Clients -->
-      <div class="category">
-        <h2>Wurst Clients</h2>
-        <div class="grid">
-          <div class="card">
-            <a href="clients/WurstX_b1_Offline_International.html">Wurst X B1</a>
-            <p>Offline version of Wurst X with a range of hacks and tools.</p>
-          </div>
-          <div class="card">
-            <a href="clients/wurstX.html">Wurst X</a>
-            <p>Famous for its wide selection of hacks and easy-to-use interface.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
 
   <script>
-    const toggleBtn = document.getElementById("toggleBtn");
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("collapsed");
-      toggleBtn.textContent = document.body.classList.contains("collapsed") ? ">" : "<";
-    });
+    // Randomized background images
+    const backgrounds = [
+      "https://images.pexels.com/photos/1367192/pexels-photo-1367192.jpeg",
+      "https://images.pexels.com/photos/20042348/pexels-photo-20042348.jpeg",
+      "https://images.pexels.com/photos/19160283/pexels-photo-19160283.jpeg",
+      "https://images.pexels.com/photos/28438030/pexels-photo-28438030.jpeg"
+    ];
+    document.body.style.backgroundImage = `url(${backgrounds[Math.floor(Math.random() * backgrounds.length)]})`;
 
+    // Search functionality
     const search = document.getElementById('search');
     const categories = document.querySelectorAll('.category');
     const cards = document.querySelectorAll('.card');
